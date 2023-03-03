@@ -7,8 +7,10 @@ enable_language(cxx)
 set(CMAKE_cxx_STANDARD 17)
 set(CMAKE_cxx_STANDARD_REQUIRED True)
 
-configure_file(version.h.in version.h)
-
 add_executable(Test main.cpp)
 
 target_include_directories(Test PUBLIC ${PROJECT_BINARY_DIR})
+
+add_subdirectory(utils)
+
+target_link_libraries(Test Utils)
