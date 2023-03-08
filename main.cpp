@@ -1,10 +1,10 @@
 #include <iostream>
-#include "version.h"
+#include "utils/utils.h"
 
-int main()
+int main(int, char**)
 {
-    std::cout << "Build: " << VERSION_N << std::endl;
+    std::cout << "Build: " << globalGetVersion() << std::endl;
     std::cout << "Hello, world!" << std::endl;
     
-    return 1;
+    return 0;
 }
