@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(Utils VERSION 1.1)
 
-configure_file(version.h.in ../version.h)
+configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
 add_library(Utils STATIC utils.cpp utils.h)
 
