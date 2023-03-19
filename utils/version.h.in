@@ -1,1 +1,1 @@
-#define VERSION_N @Test_VERSION_MAJOR@
+#define VERSION_N @Utils_VERSION_MAJOR@
