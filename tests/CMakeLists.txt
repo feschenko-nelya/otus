@@ -26,3 +26,5 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 target_link_libraries(Tests Boost::unit_test_framework)
+
+add_test(NAME test_version COMMAND Tests)
