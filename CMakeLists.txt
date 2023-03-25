@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(helloworld VERSION 1 DESCRIPTION "First course project")
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+project(helloworld VERSION ${PATCH_VERSION} DESCRIPTION "First course project")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
