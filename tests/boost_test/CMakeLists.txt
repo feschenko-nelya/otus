@@ -3,17 +3,13 @@ cmake_minimum_required(VERSION 3.14)
 project(Tests VERSION 1.1)
 enable_testing()
 
-find_package(boost COMPONENTS unit_test_framework REQUIRED QUIET)
-if(NOT DEFINED boost_DIR)
-    include(FetchContent)
-    FetchContent_Declare(
-        Boost
-        URL https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.7z
-        DOWNLOAD_EXTRACT_TIMESTAMP ON
-    )
-    FetchContent_MakeAvailable(Boost)
-
-endif()
+include(FetchContent)
+FetchContent_Declare(
+    Boost
+    URL https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.7z
+    DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
+FetchContent_MakeAvailable(Boost)
 
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
