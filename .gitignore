@@ -1,0 +1,4 @@
+./tests/google_test/.build/*
+./tests/boost_test/.build/*
+./utils/.build/*
+.build/*
