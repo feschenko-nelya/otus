@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 project(Tests VERSION 1.1)
 enable_testing()
 
-find_package(boost QUIET)
+find_package(boost COMPONENTS unit_test_framework REQUIRED QUIET)
 if(NOT DEFINED boost_DIR)
     include(FetchContent)
     FetchContent_Declare(
