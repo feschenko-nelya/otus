@@ -19,8 +19,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-            submodules: true
 
     - name: Make sudo
       run: sudo apt-get update 
@@ -51,6 +49,8 @@ jobs:
       #run: ctest -C ${{env.BUILD_TYPE}} --progress  --test-dir ${{github.workspace}}/tests/boost_test/build
 
     #- name: Configure CMake Google Tests
+       #with:
+       #     submodules: true
       #run: cmake ./tests/google_test/ -B ${{github.workspace}}/tests/google_test/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       
     #- name: Build Google Test
@@ -66,6 +66,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
+          submodules: false
           tag_name: ${{github.run_number}}
           release_name: Release ${{github.run_number}}
           draft: false
@@ -77,7 +78,6 @@ jobs:
       env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
-          submodules: false
           upload_url: ${{steps.create_release.outputs.upload_url}}
           asset_path: ./helloworld-0.0.${{github.run_number}}-Linux.deb
           asset_name: helloworld-0.0.${{github.run_number}}-Linux.deb
