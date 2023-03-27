@@ -60,8 +60,8 @@ jobs:
       #working-directory: ${{github.workspace}}/tests/google_test/build
       #run: ctest -C ${{env.BUILD_TYPE}} --progress  --test-dir ${{github.workspace}}/tests/google_test/build
 
-    - name: Create Package
-      run: cmake --build . --target package
+    #- name: Create Package
+      #run: cmake --build . --target package
       
     - name: Create Release
       id: create_release
