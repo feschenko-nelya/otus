@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     - name: Make sudo
       run: sudo apt-get update 
@@ -62,7 +62,7 @@ jobs:
 
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v2
+      uses: actions/create-release@v1
       env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
