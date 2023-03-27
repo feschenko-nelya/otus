@@ -66,7 +66,6 @@ jobs:
       env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
-          submodules: false
           tag_name: ${{github.run_number}}
           release_name: Release ${{github.run_number}}
           draft: false
