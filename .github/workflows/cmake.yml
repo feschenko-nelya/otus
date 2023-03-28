@@ -61,7 +61,7 @@ jobs:
       #run: ctest -C ${{env.BUILD_TYPE}} --progress  --test-dir ${{github.workspace}}/tests/google_test/build
 
     - name: Create Package
-      run: cmake --build . --target package
+      run: cmake --build ${{github.workspace}} --target package
       
     - name: Create Release
       id: create_release
