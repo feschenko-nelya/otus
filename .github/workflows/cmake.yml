@@ -6,9 +6,6 @@ on:
   push:
     # branches: [ "main" ]
     paths: 'hw-1/**'
-  pull_request:
-    # branches: [ "main" ]
-    paths: 'hw-1/**'
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
