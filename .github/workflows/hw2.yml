@@ -4,7 +4,14 @@ on:
   label:
     types: [created, edited]
   push:
+    # branches: [ "main" ]
     paths: 'hw-2/**'
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+  SOURCE_DIR: ${{github.workspace}}/hw-2
+  GOOGLE_TESTS_DIR: ${{github.workspace}}/tests/google_test/hw-2
 
 jobs:
   build:
@@ -14,4 +21,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo Action started.
+    - uses: actions/checkout@v2
+      with:
+            submodules: true
+
+    - name: Make sudo
+      run: sudo apt-get update 
+           && sudo apt-get install libgtest-dev libgmock-dev
+           && sudo apt-get install libtbb-dev
+  
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+      run: cmake ${{env.SOURCE_DIR}} -B ${{env.SOURCE_DIR}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DPATCH_VERSION=${{github.run_number}}
+
+    - name: Build
+      # Build your program with the given configuration
+      run: cmake --build ${{env.SOURCE_DIR}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Configure CMake Google Tests
+      run: cmake ${{env.GOOGLE_TESTS_DIR}} -B ${{env.GOOGLE_TESTS_DIR}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      
+    - name: Build Google Test
+      run: cmake --build ${{env.GOOGLE_TESTS_DIR}}/build --config ${{env.BUILD_TYPE}}
+    
+    - name: Google Tests
+      run: ctest -C ${{env.BUILD_TYPE}} --progress --test-dir ${{env.GOOGLE_TESTS_DIR}}/build
+
+    - name: Create Package
+      run: cmake --build ${{env.SOURCE_DIR}}/build --target package
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+          tag_name: ${{github.run_number}}-hw2
+          release_name: Release ${{github.run_number}}-hw2
+          draft: false
+          prerelease: false
+          working_directory: ${{env.SOURCE_DIR}}
+          
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+          upload_url: ${{steps.create_release.outputs.upload_url}}
+          asset_path: ${{github.workspace}}/build/ip_filter-0.0.${{github.run_number}}-Linux.deb
+          asset_name: ip_filter-0.0.${{github.run_number}}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
