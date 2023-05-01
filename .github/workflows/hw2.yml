@@ -1,6 +1,8 @@
 name: CMake
 
 on:
+  push:
+    paths: "hw-2/**.*"
   pull_request:
     # branches: [ "main" ]
     paths: "hw-2/**.*"
