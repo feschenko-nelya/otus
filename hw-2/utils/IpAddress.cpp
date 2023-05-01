@@ -35,7 +35,13 @@ bool IpAddress::read(const wstring &line)
 
     _address = line.substr(0, i);
 
-    return parseNumbers();
+    if (!parseNumbers())
+    {
+        _address.clear();
+        return false;
+    }
+
+    return true;
 }
 
 const vector<int> &IpAddress::getNumbers() const
@@ -94,14 +100,21 @@ bool IpAddress::parseNumbers()
             isEnd = true;
         }
 
-        wstring number = _address.substr(firstPos, lastPos - firstPos);
+        wstring sNumber = _address.substr(firstPos, lastPos - firstPos);
         try
         {
-            _numbers.push_back(stoi(number));
+            int iNumber = stoi(sNumber);
+            if ((iNumber < 0) || (iNumber > 255))
+            {
+                wcout << "Value is out of range [0; 255]: " << iNumber << "." << endl;
+                _numbers.clear();
+                return false;
+            }
+            _numbers.push_back(iNumber);
         }
         catch (...)
         {
-            wcout << "Error of converting: '" << number << "'. Address: '" << _address << "'." << endl;
+            wcout << "Error of converting: '" << sNumber << "'. Address: '" << _address << "'." << endl;
             _numbers.clear();
             return false;
         }
@@ -112,4 +125,3 @@ bool IpAddress::parseNumbers()
 
     return true;
 }
-
