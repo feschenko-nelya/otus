@@ -15,7 +15,7 @@ target_link_libraries(ip_filter Utils)
 install(TARGETS ip_filter
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+install(TARGETS ip_filter RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
