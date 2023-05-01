@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      run: | echo Action started.
+    - run: echo Action started.
