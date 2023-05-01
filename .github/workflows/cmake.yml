@@ -49,7 +49,7 @@ jobs:
     - name: Build Boost Tests
       # Build your program with the given configuration
       working-directory: ${{github.workspace}}/tests/boost_test/hw-1/
-      run: cmake --build ./ --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{github.workspace}}/tests/boost_test/hw-1/ --config ${{env.BUILD_TYPE}}
       
     - name: Boost Tests
       # Execute tests defined by the CMake configuration.
