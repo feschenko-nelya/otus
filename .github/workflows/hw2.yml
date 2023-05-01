@@ -1,12 +1,13 @@
 name: CMake
 
 on:
+  label:
+    types: [created, edited]
   push:
     paths: 'hw-2/**'
   pull_request:
     # branches: [ "main" ]
     paths: 'hw-2/**'
-    types: created
 
 jobs:
   build:
