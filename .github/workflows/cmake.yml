@@ -46,7 +46,7 @@ jobs:
 
     - name: Build Boost Tests
       # Build your program with the given configuration
-      run: cmake --build ${{env.BOOST_TESTS_DIR}} --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{env.BOOST_TESTS_DIR}}/build --config ${{env.BUILD_TYPE}}
       
     - name: Boost Tests
       # Execute tests defined by the CMake configuration.
