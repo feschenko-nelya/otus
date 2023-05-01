@@ -16,7 +16,7 @@ set(Boost_NO_WARN_NEW_VERSIONS ON)
 set(BOOST_ENABLE_CMAKE ON)
 set(BOOST_INCLUDE_LIBRARIES test)
 
-add_executable(Tests test_version.cpp ../../../utils/utils.cpp ../../../utils/utils.h)
+add_executable(Tests test_version.cpp ../../../hw-1/utils/utils.cpp ../../../hw-1/utils/utils.h)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
