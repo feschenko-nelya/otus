@@ -6,6 +6,7 @@ on:
   pull_request:
     # branches: [ "main" ]
     paths: 'hw-2/**'
+    types: created
 
 jobs:
   build:
