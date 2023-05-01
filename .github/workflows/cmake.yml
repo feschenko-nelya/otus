@@ -87,4 +87,3 @@ jobs:
           asset_path: ${{github.workspace}}/build/helloworld-0.0.${{github.run_number}}-Linux.deb
           asset_name: helloworld-0.0.${{github.run_number}}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
-
