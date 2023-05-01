@@ -4,7 +4,7 @@ project("GTests")
 
 enable_testing()
 add_subdirectory(googletest)
-add_executable(gtest_version main.cpp ../../utils/utils.h ../../utils/utils.cpp)
+add_executable(gtest_version main.cpp ../../../utils/utils.h ../../../utils/utils.cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
