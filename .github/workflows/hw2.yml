@@ -72,6 +72,6 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
           upload_url: ${{steps.create_release.outputs.upload_url}}
-          asset_path: ${{github.workspace}}/build/ip_filter-0.0.${{github.run_number}}-Linux.deb
+          asset_path: ${{github.workspace}}/hw-2/build/ip_filter-0.0.${{github.run_number}}-Linux.deb
           asset_name: ip_filter-0.0.${{github.run_number}}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
