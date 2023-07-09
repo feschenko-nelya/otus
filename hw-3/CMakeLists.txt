@@ -12,7 +12,6 @@ add_executable(bulk main.cpp
                     BlocksReaderMgr.h BlocksReaderMgr.cpp
               )
 
-install(TARGETS bulk
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+#install(TARGETS bulk LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 target_link_libraries(bulk stdc++fs)
