@@ -5,7 +5,9 @@ on:
     types: [created, edited]
   push:
     # branches: [ "main" ]
-    paths: 'hw-1/**'
+    paths: 
+    - 'hw-1/**'
+    - 'tests/google_test/hw-1/**'
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
