@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(bulk LANGUAGES CXX)
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+project(bulk VERSION 0.0.${PATCH_VERSION} LANGUAGES CXX)
+
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,6 +14,17 @@ add_executable(bulk main.cpp
                     BlocksReaderMgr.h BlocksReaderMgr.cpp
               )
 
-#install(TARGETS bulk LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS bulk LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+target_include_directories(bulk PUBLIC ${PROJECT_BINARY_DIR})
+
+install(TARGETS bulk RUNTIME DESTINATION bin)
 
 target_link_libraries(bulk stdc++fs)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT feschenko_n_s@list.ru)
+include(CPack)
+ 
