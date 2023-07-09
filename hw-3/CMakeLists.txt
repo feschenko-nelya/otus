@@ -14,4 +14,4 @@ add_executable(bulk main.cpp
 
 #install(TARGETS bulk LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-target_link_libraries(bulk stdc++fs)
+#target_link_libraries(bulk stdc++fs)
