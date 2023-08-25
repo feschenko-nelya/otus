@@ -16,12 +16,12 @@ add_executable(bulk main.cpp
                     IObserver.h IObserver.cpp
               )
 
-install(TARGETS bulk
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS bulk LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+target_include_directories(bulk PUBLIC ${PROJECT_BINARY_DIR})
 
 install(TARGETS bulk RUNTIME DESTINATION bin)
 
-target_link_libraries(${PROJECT_NAME} stdc++fs)
+target_link_libraries(bulk stdc++fs)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
