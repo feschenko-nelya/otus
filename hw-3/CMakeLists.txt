@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+project(bulk VERSION 0.0.${PATCH_VERSION} LANGUAGES CXX)
+
 project(bulk LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -15,6 +18,8 @@ add_executable(bulk main.cpp
 
 install(TARGETS bulk
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+install(TARGETS bulk RUNTIME DESTINATION bin)
 
 target_link_libraries(${PROJECT_NAME} stdc++fs)
 
